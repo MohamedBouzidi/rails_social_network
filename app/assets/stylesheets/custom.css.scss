@@ -1,0 +1,38 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins */
+
+/* variables */
+$gray-light: #777;
+$gray-dark: #555;
+$gray-darker: #222;
+
+/* navbar */
+
+header {
+  padding: 15px 0;
+}
+
+#logo {
+  float: left;
+  font-weight: 600;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#logo:hover {
+  text-decoration: underline;
+}
+
+nav ul {
+  float: right;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0 10px;
+}
