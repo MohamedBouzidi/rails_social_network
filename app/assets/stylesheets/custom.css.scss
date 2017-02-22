@@ -13,6 +13,7 @@ $gray-darker: #222;
 
 header {
   padding: 15px 0;
+  margin-bottom: 60px;
 }
 
 #logo {
@@ -66,4 +67,20 @@ footer nav {
 
 footer nav ul li {
   padding: 5px;
+}
+
+/* form controls */
+
+input {
+  margin: 5px;
+}
+
+input[type=submit] {
+  margin: 10px 0;
+}
+
+/* home page */
+
+#home-banner {
+  text-align: center;
 }
