@@ -1,24 +1,3 @@
-# README
+Rails Social Network
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+RSN is a social network application similar to [Facebook](https://facebook.com/) (being) created with the [Ruby on Rails](https://rubyonrails.org/) web framework, as a challenge to myself after having completed [the Ruby on Rails Tutorial](https://railstutorial.org/) by [Michael Hartl](https://michaelhartl.com/).
