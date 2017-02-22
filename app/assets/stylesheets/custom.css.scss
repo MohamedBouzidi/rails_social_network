@@ -4,6 +4,7 @@
 /* mixins */
 
 /* variables */
+$gray-lightest: #aaa;
 $gray-light: #777;
 $gray-dark: #555;
 $gray-darker: #222;
@@ -35,4 +36,34 @@ nav ul {
 nav ul li {
   display: inline-block;
   padding: 0 10px;
+}
+
+/* footer */
+
+footer {
+  margin-top: 60px;
+  padding: 10px;
+  border-top: 1px solid $gray-lightest;
+  a {
+    color: $gray-dark;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+}
+
+footer #logo_bottom {
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+footer nav {
+  display: inline-block;
+  float: right;
+}
+
+footer nav ul li {
+  padding: 5px;
 }
