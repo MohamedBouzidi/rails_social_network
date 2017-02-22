@@ -12,7 +12,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get create" do
-    post users_url, params: { name: @user.name, email: @user.email }
+    post users_url, params: { user: { name: @user.name, email: @user.email } }
     assert_response :success
   end
 
@@ -22,7 +22,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get update" do
-    patch user_url @user, params: { name: @user.name, email: @user.email }
+    patch user_url @user, params: { user: { name: @user.name, email: @user.email } }
     assert_response :success
   end
 

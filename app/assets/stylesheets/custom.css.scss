@@ -84,3 +84,13 @@ input[type=submit] {
 #home-banner {
   text-align: center;
 }
+
+/* errors */
+
+#error_explanation {
+  ul {
+    li {
+      color: red;
+    }
+  }
+}
