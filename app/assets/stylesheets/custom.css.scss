@@ -94,3 +94,14 @@ input[type=submit] {
     }
   }
 }
+
+/* user info */
+
+.user_info {
+  margin: 5px;
+  img#profile_photo {
+    margin: 5px 0;
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -2,7 +2,7 @@
 <h1>Sign up</h1>
 
 <div class="row">
-  <col-md-6 class="col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3">
     <%= form_for @user, url: users_path do |f| %>
       <%= render 'shared/error_messages', object: @user %>
 
@@ -20,5 +20,5 @@
       
       <%= f.submit 'Create account', class: 'btn btn-default' %>
     <% end %>
-  </col-md-6>
+  </div>
 </div>

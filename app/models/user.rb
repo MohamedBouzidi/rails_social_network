@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save :email_downcase
   validates :name, presence: true, length: { maximum: 20 }
   EMAIL_FORMAT = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -13,4 +14,10 @@ class User < ApplicationRecord
   def User.new_token
     SecureRandom.urlsafe_base64
   end
+
+  private
+
+    def email_downcase
+      self.email = self.email.downcase
+    end
 end

@@ -23,7 +23,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should get update" do
     patch user_url @user, params: { user: { name: @user.name, email: @user.email } }
-    assert_response :success
+    assert_response :found
   end
 
 end

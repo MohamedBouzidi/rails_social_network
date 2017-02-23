@@ -3,7 +3,9 @@
 one:
   name: Leon
   email: leon@valid.com
+  password_digest: <%= User.digest('foobar') %>
 
 two:
   name: Archer
   email: arch@aol.us
+  password_digest: <%= User.digest('foobar') %>
