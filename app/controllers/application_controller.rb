@@ -19,4 +19,11 @@ class ApplicationController < ActionController::Base
     session.delete(:user_id) if !session[:user_id].nil?
   end
 
+  def logged_in_user
+    unless is_logged_in?
+      flash[:danger] = "You must login to complete this action"
+      redirect_to login_path
+    end
+  end
+
 end

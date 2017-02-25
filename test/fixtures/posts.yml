@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  body: Hello Kitty
+
+two:
+  user_id: 1
+  body: Not a Micropost!

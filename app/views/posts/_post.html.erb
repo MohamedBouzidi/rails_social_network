@@ -1,0 +1,20 @@
+<div class="thumbnail">
+  <section class="post_head">
+    <%= gravatar_for(post.user, 60) %>
+    <div class="details">
+      <p><%= link_to post.user.name, post.user %></p>
+      <% if post.created_at %>
+        <small><%= time_ago_in_words(post.created_at) %></small>
+      <% end %>
+    </div>
+    <% if current_user?(post.user) %>
+      <div class="links">
+        <%= link_to 'Edit', '/posts/' + post.id.to_s + '/edit', class: 'btn btn-default' %>
+        <%= link_to 'Delete', '/posts/' + post.id.to_s, method: :delete, class: 'btn btn-danger' %>
+      </div>
+    <% end %>
+  </section>
+  <p class="post_body">
+    <%= post.body %>
+  </p>
+</div>

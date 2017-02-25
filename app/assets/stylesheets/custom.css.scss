@@ -9,6 +9,12 @@ $gray-light: #777;
 $gray-dark: #555;
 $gray-darker: #222;
 
+/* content */
+
+#content {
+  margin-top: 80px;
+}
+
 /* navbar */
 
 header {
@@ -79,6 +85,12 @@ input[type=submit] {
   margin: 10px 0;
 }
 
+textarea {
+  resize: vertical;
+  min-height: 70px;
+  max-height: 200px;
+}
+
 /* home page */
 
 #home-banner {
@@ -99,9 +111,43 @@ input[type=submit] {
 
 .user_info {
   margin: 5px;
-  img#profile_photo {
+  img {
+    display: inline-block;
+    border-radius: 4px;
     margin: 5px 0;
+    margin-right: 15px;
     width: 80px;
     height: 80px;
   }
+  .details {
+    display: inline-block;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+/* links */
+
+.links {
+  float: right;
+}
+
+/* post */
+.post_head {
+  img {
+    display: inline-block;
+    border-radius: 4px;
+    margin: 0;
+  }
+  .details {
+    display: inline-block;
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.post_body {
+  padding: 10px;
 }

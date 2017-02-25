@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'sessions/new'
-
   root    'static_pages#home'
   get     'about'     => 'static_pages#about'
   get     'help'      => 'static_pages#help'
@@ -13,7 +10,10 @@ Rails.application.routes.draw do
   delete  'logout'    => 'sessions#destroy'
   get     'profile'   => 'users#show'
 
-  resources :users
+  resources :users do
+    resources :posts, only: [:index, :new, :create]
+  end
+  resources :posts, only: [:show, :edit, :update, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

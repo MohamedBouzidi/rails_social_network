@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create!(name: 'Alex Garrett', email: 'alex@home.com', password: 'foobar', password_confirmation: 'foobar')
+
+user = User.find_by_email('alex@home.com')
+50.times do
+  body = Faker::Lorem.sentence(5)
+  user.posts.build(body: body)
+end

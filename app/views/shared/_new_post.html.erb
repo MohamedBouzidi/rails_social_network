@@ -1,0 +1,4 @@
+<%= form_for [user, user.posts.build] do |f| %>
+  <%= f.text_area :body, placeholder: "What's up?" , class: 'form-control' %>
+  <%= f.submit 'post', class: 'btn btn-primary' %>
+<% end %>

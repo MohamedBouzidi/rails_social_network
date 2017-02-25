@@ -1,0 +1,25 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= gravatar_for(user) %>
+      <div class="details">
+        <p><%= link_to user.name, user_path(user) %></p>
+        <% if current_user?(user) %>
+          <p><%= user.email %></p>
+        <% end %>
+      </div>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <section class="thumbnail">
+      <% if @post.nil? %>
+        <%= render 'shared/new_post', user: user %>
+      <% else %>
+        <%= render 'shared/edit_post', user: user, post: @post %>
+      <% end %>
+    </section>
+    <section class="feed">
+      <%= render 'shared/feed', user: user %>
+    </section>
+  </div>
+</div>
