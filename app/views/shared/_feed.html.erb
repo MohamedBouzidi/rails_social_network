@@ -1,3 +1,7 @@
 <% if user.posts.any? %>
-  <%= render user.posts %>
+  <% user.posts.each do |post| %>
+    <% if post.id %>
+      <%= render post %>
+    <% end %>
+  <% end %>
 <% end %>

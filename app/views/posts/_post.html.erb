@@ -9,12 +9,16 @@
     </div>
     <% if current_user?(post.user) %>
       <div class="links">
-        <%= link_to 'Edit', '/posts/' + post.id.to_s + '/edit', class: 'btn btn-default' %>
-        <%= link_to 'Delete', '/posts/' + post.id.to_s, method: :delete, class: 'btn btn-danger' %>
+        <%= link_to 'Edit', edit_post_url(post), class: 'btn btn-default' %>
+        <%= link_to 'Delete', post_url(post), method: :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-danger' %>
       </div>
     <% end %>
   </section>
   <p class="post_body">
     <%= post.body %>
   </p>
+  <section class="new_comment">
+    <%= render 'shared/new_comment', post: post %>
+    <%= render post.comments %>
+  </section>
 </div>

@@ -1,0 +1,14 @@
+<% if comment.user %>
+  <section class="well well-sm comment">
+    <div class="commenter">
+      <%= gravatar_for(comment.user, 30) %>
+      <%= link_to comment.user.name, user_path(comment.user) %>
+      <% if current_user?(comment.user) %>
+        <div class="links">
+          <%= link_to "Delete", comment, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+    <%= comment.body %>
+  </section>
+<% end %>

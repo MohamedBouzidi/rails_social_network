@@ -151,3 +151,16 @@ textarea {
 .post_body {
   padding: 10px;
 }
+
+/* comment */
+
+.comment {
+  .commenter {
+    display: block;
+    padding-right: 5px;
+    margin-bottom: 10px;
+    img {
+      border-radius: 4px;
+    }
+  }
+}
