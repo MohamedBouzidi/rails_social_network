@@ -30,4 +30,15 @@ class ApplicationController < ActionController::Base
     user == current_user
   end
 
+  def remember(user)
+    user.remember
+    cookies.permanent.signed[:remember_user] = user.remember_digest
+  end
+
+  def forget
+    if !cookies.signed[:remember_user].nil? and current_user.remember_digest == cookies.signed[:remember_user]
+      user.forget
+      cookies.delete :remember_user
+    end
+  end
 end

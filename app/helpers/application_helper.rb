@@ -10,4 +10,11 @@ module ApplicationHelper
     end
   end
 
+  def login_remembered_user
+    if !cookies.signed[:remember_digest].nil?
+      user = User.find(:remember_digest => cookies.signed[:remember_digest])
+      log_in user
+    end
+  end
+
 end
