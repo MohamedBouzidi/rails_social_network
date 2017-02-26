@@ -5,10 +5,10 @@
       <%= link_to comment.user.name, user_path(comment.user) %>
       <% if current_user?(comment.user) %>
         <div class="links">
-          <%= link_to "Delete", comment, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+          <%= link_to "delete", comment, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-link" %>
         </div>
       <% end %>
     </div>
-    <%= comment.body %>
+    <p><%= comment.body %></p>
   </section>
 <% end %>

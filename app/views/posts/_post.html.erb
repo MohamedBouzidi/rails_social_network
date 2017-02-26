@@ -8,9 +8,14 @@
       <% end %>
     </div>
     <% if current_user?(post.user) %>
-      <div class="links">
-        <%= link_to 'Edit', edit_post_url(post), class: 'btn btn-default' %>
-        <%= link_to 'Delete', post_url(post), method: :delete, data: { confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+      <div class="dropdown float-right">
+        <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span class="glyphicon glyphicon-option-horizontal"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><%= link_to "Edit post", edit_post_path(post) %></li>
+          <li><%= link_to "Delete post", post_path(post), method: :delete, data: { confirm: "Are you sure?"} %></li>
+        </ul>
       </div>
     <% end %>
   </section>

@@ -1,21 +1,25 @@
 <% provide(:title, 'Login') %>
-<h1>Login</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for :user, url: login_url do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-      
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-      
-      <%= f.submit 'Submit', class: 'btn btn-default' %>
-    <% end %>
-    <p>
-      new user ?
-      <%= link_to 'Sign up', signup_url %>
-       for free
-    </p>
+    <div class="panel panel-default">
+      <div class="panel-heading">Login</div>
+      <div class="panel-body">
+        <%= form_for :user, url: login_url do |f| %>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+          
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+          
+          <%= f.submit 'Submit', class: 'btn btn-default' %>
+        <% end %>
+        <span>
+          New user ?
+          <%= link_to 'Sign up', signup_url %>
+           for free
+        </span>
+      </div>
+    </div>
   </div>
 </div>
