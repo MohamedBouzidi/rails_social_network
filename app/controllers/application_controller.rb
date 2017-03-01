@@ -35,7 +35,12 @@ class ApplicationController < ActionController::Base
     cookies.permanent.signed[:remember_user] = user.remember_digest
   end
 
-  def forget
+  def activate(user)
+    user.update_column(:activated, true)
+    user.update_column(:activated_at, Time.zone.now)
+  end
+
+  def forget(user)
     if !cookies.signed[:remember_user].nil? and current_user.remember_digest == cookies.signed[:remember_user]
       user.forget
       cookies.delete :remember_user

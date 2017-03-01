@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete  'logout'    => 'sessions#destroy'
   get     'profile'   => 'users#show'
 
+  resources :account_activations, only: [:edit]
   resources :users do
     resources :posts, only: [:index, :new, :create]
   end

@@ -10,12 +10,16 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:user][:email])
     @remember_user = params[:user][:remember_me]
     if !@user.nil? and @user.authenticate(params[:user][:password])
+      if !@user.activated?
+        flash[:info] = "Account not yet activated. Check your email for activation link"
+        redirect_to root_url and return
+      end
       flash[:success] = 'You have been logged in'
       log_in @user
       if @remember_user == '1'
         remember @user
       else
-        forget
+        forget @user
       end
       redirect_to root_url 
     else
