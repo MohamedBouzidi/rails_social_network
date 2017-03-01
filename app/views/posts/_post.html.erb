@@ -22,6 +22,9 @@
   <p class="post_body">
     <%= post.body %>
   </p>
+  <section class="likes">
+    <%= render 'shared/likes', post: post %>
+  </section>
   <section class="new_comment">
     <%= render 'shared/new_comment', post: post %>
     <%= render post.comments %>

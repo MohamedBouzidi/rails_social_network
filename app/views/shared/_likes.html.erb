@@ -1,0 +1,10 @@
+<% if post %>
+  <% if post.likes.find_by_user_id(current_user) %>
+    <a href="<%= dislike_post_path(post) %>"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+  <% else %>
+    <a href="<%= like_post_path(post) %>"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+  <% end %>
+  <% if post.likes.any? %>
+    <%= post.likes.count %>
+  <% end %>
+<% end %>

@@ -17,6 +17,10 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:show, :edit, :update, :destroy] do
     resources :comments, only: [:index, :new, :create]
+    member do
+      get 'like'
+      get 'dislike'
+    end
   end
 
   resources :comments, only: [:show, :edit, :update, :delete, :destroy]

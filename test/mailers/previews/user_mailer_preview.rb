@@ -2,7 +2,7 @@
 class UserMailerPreview < ActionMailer::Preview
   
   def account_activation
-    UserMailer.account_activation(User.find_by_name('Horse'))
+    UserMailer.account_activation(User.find_by_name('Leon'))
   end
 
 end
