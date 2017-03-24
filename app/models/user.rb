@@ -5,6 +5,12 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
+  has_many :active_relations, class_name: "Relation", foreign_key: :sender_id
+  has_many :passive_relations, class_name: "Relation", foreign_key: :receiver_id
+
+  has_many :active_friends, through: :active_relations, source: :receiver
+  has_many :passive_friends, through: :passive_relations, source: :sender
+
   # Attributes
   attr_accessor :remember_token
   attr_accessor :activation_token

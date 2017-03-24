@@ -29,6 +29,7 @@
             <ul class="dropdown-menu">
               <li><a href="<%= edit_user_path(current_user) %>"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
               <li><a href="<%= user_path(current_user) %>"><span class="glyphicon glyphicon-home"></span> Profile</a></li>
+              <li><a href="<%= friends_user_path(current_user) %>"><span class="glyphicon glyphicon-star-empty"></span> Friends</a></li>
               <li class="divider" role="separator"></li>
               <li><a href="<%= logout_path %>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>

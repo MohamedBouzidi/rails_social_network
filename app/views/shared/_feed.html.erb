@@ -1,7 +1,8 @@
-<% if user.posts.any? %>
-  <% user.posts.each do |post| %>
+<% if posts.any? %>
+  <% posts.each do |post| %>
     <% if post.id %>
       <%= render post %>
     <% end %>
   <% end %>
+  <%= will_paginate posts %>
 <% end %>

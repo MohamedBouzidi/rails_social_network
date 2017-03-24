@@ -7,6 +7,8 @@ end
 
 gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'sqlite3'
 gem 'faker'
 gem 'bcrypt'

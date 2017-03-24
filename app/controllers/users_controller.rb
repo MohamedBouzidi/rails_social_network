@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
   end
 
   def edit
@@ -32,6 +33,12 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def friends
+    @user = User.find(params[:id])
+    @active_friends = @user.active_friends
+    @passive_friends = @user.passive_friends
   end
 
   private
