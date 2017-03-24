@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :new, :create]
     member do
       get 'friends'
+      get 'friendrequest'
+      get 'acceptrequest'
     end
   end
 

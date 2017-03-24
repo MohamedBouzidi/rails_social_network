@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315162032) do
+ActiveRecord::Schema.define(version: 20170324164929) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -38,10 +38,18 @@ ActiveRecord::Schema.define(version: 20170315162032) do
   create_table "relations", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
     t.boolean  "accepted"
     t.datetime "accepted_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["sender_id", "receiver_id"], name: "index_requests_on_sender_id_and_receiver_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

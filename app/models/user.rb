@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :active_friends, through: :active_relations, source: :receiver
   has_many :passive_friends, through: :passive_relations, source: :sender
 
+  has_many :sent_requests, class_name: "Request", foreign_key: :sender_id
+  has_many :received_requests, class_name: "Request", foreign_key: :receiver_id
+
   # Attributes
   attr_accessor :remember_token
   attr_accessor :activation_token
@@ -47,6 +50,21 @@ class User < ApplicationRecord
   # forget user from computer
   def forget
     self.update_column(:remember_digest, nil)
+  end
+
+  # returns true if request was sent to user
+  def sent_request?(user)
+    !self.sent_requests.find_by_receiver_id(user.id).nil?
+  end
+
+  # returns true if request was received from user
+  def received_request?(user)
+    !self.received_requests.find_by_sender_id(user.id).nil?
+  end
+
+  # returns true if user is a friend
+  def friend?(user)
+    !self.active_friends.find_by_id(user.id).nil? or !self.passive_friends.find_by_id(user.id).nil?
   end
 
   private

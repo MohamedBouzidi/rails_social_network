@@ -41,6 +41,22 @@ class UsersController < ApplicationController
     @passive_friends = @user.passive_friends
   end
 
+  def friendrequest
+    current_user.sent_requests.create(receiver_id: params[:id])
+
+    respond_to do |format|
+      format.js { render js: "location.reload();" }
+    end
+  end
+
+  def acceptrequest
+    current_user.passive_relations.create(sender_id: params[:id])
+
+    respond_to do |format|
+      format.js { render js: "location.reload();" }
+    end
+  end
+
   private
 
     def user_params
