@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :sent_requests, class_name: "Request", foreign_key: :sender_id
   has_many :received_requests, class_name: "Request", foreign_key: :receiver_id
 
+  has_many :notifications, dependent: :destroy
+
   # Attributes
   attr_accessor :remember_token
   attr_accessor :activation_token
@@ -54,12 +56,12 @@ class User < ApplicationRecord
 
   # returns true if request was sent to user
   def sent_request?(user)
-    !self.sent_requests.find_by_receiver_id(user.id).nil?
+    !self.sent_requests.where(receiver_id: user.id, accepted: false, accepted_at: nil).first.nil?
   end
 
   # returns true if request was received from user
   def received_request?(user)
-    !self.received_requests.find_by_sender_id(user.id).nil?
+    !self.received_requests.where(sender_id: user.id, accepted: false, accepted_at: nil).first.nil?
   end
 
   # returns true if user is a friend

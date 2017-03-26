@@ -1,5 +1,7 @@
 <% if current_user.sent_request?(user) %>
   <div class="label label-info">Request was sent</div>
+<% elsif current_user.received_request?(user) %>
+  <%= link_to 'Accept Request', acceptrequest_user_url(user), remote: true, class: 'btn btn-primary btn-xs' %>
 <% elsif current_user.friend?(user) %>
   <div class="label label-warning">Friends Already</div>
 <% else %>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :delete, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :logged_in, only: [:like, :dislike]
 
   def new
@@ -8,11 +8,10 @@ class PostsController < ApplicationController
   def create
     @user = User.find_by_id(params[:user_id])
     @post = @user.posts.build(post_params)
-    if @post.save
-      flash[:success] = "Post created successfully"
-      redirect_to root_url
-    else
-      redirect_back :back
+    @post.save
+    
+    respond_to do |format|
+      format.js { render :js => "location.reload();" }
     end
   end
 
@@ -36,12 +35,9 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:info] = 'Post destroyed successfully'
-      redirect_to root_url
-    else
-      redirect_to root_url
-    end
+    @post.destroy
+    flash[:success] = 'Post deleted successfully'
+    redirect_to root_url
   end
 
   def like
@@ -69,10 +65,8 @@ class PostsController < ApplicationController
     end
 
     def correct_user
-      if !current_user?(self.user)
-        flash[:danger] = "You are not allowed to perform this action"
-        redirect_to root_url
-      end
+      @post = current_user.posts.find_by_id(params[:id])
+      redierct_to root_url if @post.nil?
     end
 
     def logged_in

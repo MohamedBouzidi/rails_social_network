@@ -41,8 +41,11 @@ class UsersController < ApplicationController
     @passive_friends = @user.passive_friends
   end
 
+  # Both these methods should be organized further
   def friendrequest
     current_user.sent_requests.create(receiver_id: params[:id])
+    user = User.find(params[:id])
+    user.notifications.create(body: "#{current_user.name} requesting friendship", link: user_path(current_user))
 
     respond_to do |format|
       format.js { render js: "location.reload();" }
@@ -51,10 +54,21 @@ class UsersController < ApplicationController
 
   def acceptrequest
     current_user.passive_relations.create(sender_id: params[:id])
+    request = current_user.received_requests.where(sender_id: params[:id]).first
+    request.update_column(:accepted, true)
+    request.update_column(:accepted_at, Time.zone.now)
+
+    user = User.find(params[:id])
+    current_user.notifications.where(body: "#{user.name} requesting friendship").first.update_column(:checked, true)
+    user.notifications.create(body: "#{current_user.name} accepted your friendship")
 
     respond_to do |format|
       format.js { render js: "location.reload();" }
     end
+  end
+
+  def refuserequest
+    
   end
 
   private

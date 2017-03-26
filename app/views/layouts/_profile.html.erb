@@ -7,7 +7,9 @@
         <% if current_user?(user) %>
           <p><%= user.email %></p>
         <% else %>
-          <%= render 'shared/request', user: user %>
+          <div class="request">
+            <%= render 'shared/request', user: user %>
+          </div>
         <% end %>
       </div>
     </section>

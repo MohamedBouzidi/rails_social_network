@@ -24,12 +24,11 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(user_id: current_user.id, body: params[:comment][:body])
-    if @comment.save
-      flash[:success] = "Comment created successfully"
-    else
-      flash[:danger] = "Failed to create comment"
+    @comment.save
+
+    respond_to do |format|
+      format.js { render :js => "location.reload();" }
     end
-    redirect_to user_url(@post.user)
   end
 
   def destroy

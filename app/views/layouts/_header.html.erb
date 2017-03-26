@@ -16,13 +16,43 @@
         
         <form action="" class="navbar-form navbar-left" role="search">
           <div class="input-group">
-            <span class="input-group-addon">Banana</span>
-            <input type="text" class="form-control search-input" placeholder="Search for user..." size="70">
+            <span class="input-group-addon">Search</span>
+            <input type="text" class="form-control search-input" placeholder="Search for user..." size="60">
             <span class="input-group-btn">
               <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
             </span>
+            <div class="btn-group input-group-btn" role="group" aria-label="controls">
+              <div class="input-group-btn">
+                <button class="btn btn-default dropdown-toggle" type="button" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-bell"></span>
+                  <% if current_user.notifications.where(checked: false).count > 0 %>
+                    <span class="badge">
+                      <%= current_user.notifications.where(checked: false).count %>
+                    </span>
+                  <% end %>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-left list-group" aria-labelledby="notificationDropdown">
+                  <% if current_user.notifications.count > 0 %>
+                    <% current_user.notifications.order(:created_at).take(6).each do |notif| %>
+                      <%= render 'shared/notifcation', notif: notif %>
+                    <% end %>
+                  <% else %>
+                    <div class="list-group-item"><h5>No Notifications</h5></div>
+                  <% end %>
+                </ul>              
+              </div>
+
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-comment" id="messagesDropdown"></span></button>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+                  <li><a href="#">Action</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </form>
+
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name %> <span class="caret"></span></a>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324164929) do
+ActiveRecord::Schema.define(version: 20170325160547) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20170324164929) do
     t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "link"
+    t.boolean  "checked",    default: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
     t.text     "body"
@@ -40,15 +49,16 @@ ActiveRecord::Schema.define(version: 20170324164929) do
     t.integer  "receiver_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["sender_id", "receiver_id"], name: "index_relations_on_sender_id_and_receiver_id", unique: true
   end
 
   create_table "requests", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.boolean  "accepted"
+    t.boolean  "accepted",    default: false
     t.datetime "accepted_at"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["sender_id", "receiver_id"], name: "index_requests_on_sender_id_and_receiver_id", unique: true
   end
 

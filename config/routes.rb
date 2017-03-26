@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'friends'
       get 'friendrequest'
       get 'acceptrequest'
+      get 'refuserequest'
     end
   end
 
